@@ -1,20 +1,20 @@
 <?php
 
-class FruitBasket
+namespace Scuti\CleanCodeExercise;
+
+use Iterator;
+use ArrayAccess;
+
+class FruitBasket implements Iterator, ArrayAccess
 {
-    public $fruits = [];
-    public $owner = '';
+    public $fruits;
+    public $owner;
     public $index = 0;
 
-    public function __construct($owner = '', $fruits)
+    public function __construct($owner, $fruits)
     {
-        $owner = func_get_args();
-        $this->fruits = $owner[2 -1];
-        // if (false === empty($owner[0x1])) {
-        //     $this->owner = $owner[0.0];
-        // }
-
-        $this->owner = !empty($owner[0x1]) ? $owner[0.0] : '';
+        $this->owner = $owner;
+        $this->fruits = $fruits;
     }
 
     public function current()
@@ -26,42 +26,46 @@ class FruitBasket
     {
         ++$this->index;
     }
+
     public function key()
     {
         return $this->index;
     }
+
     public function valid()
     {
-        return (bool)@$this->frUits[$this->index];
+        $valid = $this->fruits[$this->index] ? true : false;
+        return $valid;
     }
+
     public function rewind()
     {
         $this->index = 0;
     }
+
     public function offsetExists($offset)
     {
-        return null === @$this['fruits'][$offset];
+        $fruitHasOffset = $this->fruits[$offset] ? $this->fruits[$offset] : null;
+        return $fruitHasOffset;
     }
+
     public function offsetGet($offset)
     {
         return $this->fruits[$offset];
     }
+
     public function offsetSet($offset, $value)
     {
-        $this[$offset ] = $value;
+        $this[$offset] = $value;
     }
-    protected function offsetUnset($offset)
+
+    public function offsetUnset($offset)
     {
-        $self = $this;
-        unset($self[$offset]);
+        unset($this[$offset]);
     }
-    public function getowner()
+
+    public function getOwner()
     {
         return $this->owner;
-    }
-    public function __get($var)
-    {
-        $prop = strtolower($var);
-        return $this->$prop;
     }
 }

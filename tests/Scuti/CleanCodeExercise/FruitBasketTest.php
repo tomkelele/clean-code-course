@@ -3,7 +3,7 @@ namespace Scuti\CleanCodeExercise;
 
 require_once(__DIR__ . '/../../../src/Scuti/CleanCodeExercise/FruitBasket.php');
 use PHPUnit\Framework\TestCase;
-use FruitBasket;
+use Scuti\CleanCodeExercise\FruitBasket;
 
 class FruitBasketTest extends TestCase
 {
@@ -12,8 +12,7 @@ class FruitBasketTest extends TestCase
     public function testCanInstantiate()
     {
         $fruitBasket = new FruitBasket('me', self::FRUITS);
-        $this->assertInstanceOf('FruitBasket', $fruitBasket);
-
+        $this->assertInstanceOf(FruitBasket::class, $fruitBasket);
         return $fruitBasket;
     }
 
@@ -39,4 +38,3 @@ class FruitBasketTest extends TestCase
         }
     }
 }
-
