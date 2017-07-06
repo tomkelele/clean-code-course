@@ -7,13 +7,13 @@ use ArrayAccess;
 
 class FruitBasket implements Iterator, ArrayAccess
 {
-    public $fruits;
-    public $owner;
-    public $index = 0;
+    private $fruits;
+    private $owner;
+    private $index = 0;
 
     public function __construct($owner, $fruits)
     {
-        $this->owner = $owner;
+        $this->owner = $owner ? $owner : "";
         $this->fruits = $fruits;
     }
 
