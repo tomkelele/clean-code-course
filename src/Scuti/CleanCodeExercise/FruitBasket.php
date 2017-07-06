@@ -7,7 +7,7 @@ use ArrayAccess;
 
 class FruitBasket implements Iterator, ArrayAccess
 {
-    private $fruits;
+    private $fruits = [];
     private $owner;
     private $index = 0;
 
@@ -67,5 +67,10 @@ class FruitBasket implements Iterator, ArrayAccess
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    public function getFruits()
+    {
+        return $this->fruits;
     }
 }

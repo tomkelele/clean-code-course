@@ -22,7 +22,9 @@ class FruitBasketTest extends TestCase
     public function testIsIterable(FruitBasket $fruitBasket)
     {
         $i = 0;
-        foreach ($fruitBasket as $fruit) {
+        // var_dump(self::FRUITS);
+        // var_dump($fruitBasket->getFruits());
+        foreach ($fruitBasket->getFruits() as $fruit) {
             $this->assertSame(self::FRUITS[$i], $fruit);
             $i++;
         }
