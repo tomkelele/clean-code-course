@@ -56,12 +56,12 @@ class FruitBasket implements Iterator, ArrayAccess
 
     public function offsetSet($offset, $value)
     {
-        $this[$offset] = $value;
+        $this->fruits[$offset] = $value;
     }
 
     public function offsetUnset($offset)
     {
-        unset($this[$offset]);
+        unset($this->fruits[$offset]);
     }
 
     public function getOwner()
